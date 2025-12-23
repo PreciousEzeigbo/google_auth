@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = ["google-auth-7lv0.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["https://google-auth-7lv0.onrender.com"]
 
 # Application definition
@@ -90,7 +90,6 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False

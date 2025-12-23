@@ -2,18 +2,17 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from django.http import JsonResponse
+from rest_framework.decorators import api_view
 
 
+@api_view(['GET'])
 def api_root(request):
-    return JsonResponse({
-        "status": "ok",
-        "message": "Backend is running",
-        "auth": {
-            "login": "/accounts/login/",
-            "google": "/accounts/google/login/",
-            "token_login": "/accounts/google/login/token/"
-        }
+    return Response({
+        'auth': 'api/auth/',
+        'registration': 'api/auth/registration/',
+        'token_obtain_pair': 'api/token/',
+        'token_refresh': 'api/token/refresh/',
+        'me': 'api/me/',
     })
 
 class MeView(APIView):
@@ -25,8 +24,3 @@ class MeView(APIView):
             "email": request.user.email,
             "username": request.user.username,
         })
-    
-from django.http import JsonResponse
-
-def health(request):
-    return JsonResponse({"status": "ok"})
